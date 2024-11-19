@@ -20,7 +20,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // Routes
 app.use("/api", diaryRoutes);
-
+app.use(cors({
+  origin: 'http://localhost:3000', // URL de tu frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type']
+}));
 // MongoDB Connection
 const connectDB = async () => {
   try {
